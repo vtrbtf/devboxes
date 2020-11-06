@@ -1,11 +1,13 @@
 - hosts: all
   roles:
+  - role: foundation
+    tags:
+    - kernel
   - role: git
     tags:
     - shell
     - git
     - scm
-    - vcs
   - role: zsh
     tags:
     - zsh
@@ -23,11 +25,6 @@
     - shell
     - gpg
     - gnupg
-  - role: mercurial
-    tags:
-    - shell
-    - mercurial
-    - hg
   - role: cli-tools
     tags:
     - shell
@@ -40,11 +37,6 @@
     - docker-machine
     - ops
     - container
-  - role: packer
-    tags:
-    - ops
-    - tools
-    - packer
   - role: terraform
     tags:
     - ops
@@ -82,23 +74,7 @@
     - nodejs
     - js
     - javascript
-  - role: k8s
-    tags:
-    - ops
-    - k8s
-    - kubernetes
-    - helm
-    - draft
-    - gcloud
-    - gke
   - role: vscode
     tags:
     - dev
     - vscode
-  - role: idea
-    tags:
-    - dev
-    - idea
-  - role: recording
-    tags:
-    - recording

@@ -1,0 +1,22 @@
+- name: Install linux headers
+  package:
+    name: "linux-headers-{{ ansible_kernel }}"
+
+- name: Install Ubuntu build-essential
+  become: yes
+  package:
+    name:
+    - build-essential
+    - gnupg
+    - gdebi
+    - apt-transport-https
+    - software-properties-common
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install curl
+  become: yes
+  package:
+    name:
+    - ca-certificates
+    - curl
+

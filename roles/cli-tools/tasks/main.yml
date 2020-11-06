@@ -1,59 +1,46 @@
+- name: Install cli tools from repository
+  become: yes
+  package:
+    name:
+    - openssl
+    - zip
+    - unzip
+    - expect
+    - tree
+    - ripgrep
+    - tilix
+    - task
+    - ncdu
+    - rsync
+    - htop
+    - make
+    - ranger
+    - xclip
+    - wget
+    - mtr
+    - iftop
+    - xmlstarlet
+    - jq
+
 - name: Install cli tools from repository (Ubuntu)
   become: yes
-  apt:
+  package:
     name:
-    - htop
-    - iftop
-    - make
-    - openssl
-    - wget
-    - curl
-    - subversion
-    - jq
-    - ncdu
+    - gdebi
+    - openssh-server
+    - dconf-cli
+    - telnet
   when: ansible_distribution == "Ubuntu"
 
 - name: Install cli tools from repository (Arch)
   become: yes
   pacman:
     name:
-    - htop
-    - iftop
-    - make
-    - openssl
-    - wget
-    - curl
-    - subversion
-    - jq
     - diff-so-fancy
-    - ncdu
+    - openssh
+    - dconf
+    - inetutils
   when: ansible_distribution == "Archlinux"
-
-- name: Install gotop tap (MacOSX)
-  homebrew_tap:
-    name: cjbassi/gotop
-  when: ansible_distribution == "MacOSX"
-
-- name: Install cli tools from repository (MacOSX)
-  homebrew:
-    name:
-    - htop
-    - iftop
-    - make
-    - openssl
-    - wget
-    - curl
-    - subversion
-    - jq
-    - bat
-    - gotop
-    - ctop
-    - cfssl
-    - gopass
-    - vegeta
-    - diff-so-fancy
-    - ncdu
-  when: ansible_distribution == "MacOSX"
 
 - name: Install diff-so-fancy (Ubuntu)
   become: yes
@@ -64,24 +51,18 @@
 
 - name: Install bat
   include: bat.yml
-  when: ansible_distribution == "Ubuntu" or ansible_distribution == "Archlinux"
 
 - name: Install gotop
   include: gotop.yml
-  when: ansible_distribution == "Ubuntu" or ansible_distribution == "Archlinux"
 
 - name: Install ctop
   include: ctop.yml
-  when: ansible_distribution == "Ubuntu" or ansible_distribution == "Archlinux"
 
 - name: Install cfssl
   include: cfssl.yml
-  when: ansible_distribution == "Ubuntu" or ansible_distribution == "Archlinux"
 
 - name: Install gopass
   include: gopass.yml
-  when: ansible_distribution == "Ubuntu" or ansible_distribution == "Archlinux"
 
 - name: Install vegeta
   include: vegeta.yml
-  when: ansible_distribution == "Ubuntu" or ansible_distribution == "Archlinux"

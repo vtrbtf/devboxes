@@ -1,9 +1,0 @@
-- name: Install Intellij Idea Ultimate on Linux
-  include: linux.yml
-  become: yes
-  when: ansible_system == "Linux"
-
-- name: Install Intellij Idea Ultimate (MacOSX)
-  homebrew_cask:
-    name: intellij-idea
-  when: ansible_distribution == "MacOSX"
